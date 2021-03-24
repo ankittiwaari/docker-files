@@ -4,7 +4,10 @@ RUN docker-php-ext-enable mysqli
 RUN a2enmod rewrite
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
-WORKDIR /usr/local/etc/php
-COPY php.ini php.ini
 RUN apt-get update
 RUN apt-get install nano
+RUN apt-get install zip unzip
+RUN apt-get install -y libzip-dev
+RUN docker-php-ext-configure zip
+WORKDIR /usr/local/etc/php
+COPY php.ini php.ini

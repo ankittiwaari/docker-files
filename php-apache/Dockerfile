@@ -1,7 +1,7 @@
 FROM php:7.4-apache
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql
 RUN docker-php-ext-enable pdo_mysql
 RUN a2enmod rewrite
 RUN pecl install xdebug
@@ -13,3 +13,4 @@ RUN apt-get install -y libzip-dev
 RUN docker-php-ext-configure zip
 WORKDIR /usr/local/etc/php
 COPY php.ini php.ini
+
